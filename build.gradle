@@ -55,6 +55,7 @@ dependencies {
     compile "org.jboss.arquillian:arquillian-bom:1.1.12.Final"
     testCompile "junit:junit:4.12"
     providedCompile "javax:javaee-api:7.0"
+    providedCompile "org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:1.0"
 
     //testCompile  "javax.validation:validation-api:2.0.1.Final"
 
@@ -69,7 +70,10 @@ dependencies {
     //testCompile "fish.payara.arquillian:arquillian-payara-server-4-embedded:1.0.Beta2"
     testCompile "fish.payara.arquillian:arquillian-payara-micro-5-managed:1.0.Beta3-m3"
 
-    testCompile  "org.jboss.arquillian.extension:arquillian-rest-client-impl-jersey:1.0.0.Alpha4"
+    //testCompile  "org.jboss.arquillian.extension:arquillian-rest-client-impl-jersey:1.0.0.Alpha4"
+    testCompile "fish.payara.arquillian:payara-client-ee7:1.0.Beta3-m2"
+    testCompile "com.nimbusds:nimbus-jose-jwt:5.1"
+    testCompile "org.json:json:20180130"
 
 }
 
@@ -86,10 +90,14 @@ test {
     systemProperty "payara.microJar", payaraJarPath
     // systemProperty "microJar", payaraJarPath
    // systemProperty "arquillian.launch","glassfish-embedded"
+    filter {
+        //specific test method
+        includeTestsMatching "TestJWT"
+    }
 
 
 
-}
+    }
 
 task runMicro(type: Exec, dependsOn: war) {
     def payaraJarPath = relativeProjectPath("./").concat("/lib/payara-micro-5.181.jar")

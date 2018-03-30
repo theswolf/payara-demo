@@ -7,7 +7,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.ejb.EJB;
+import javax.inject.Inject;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -22,7 +22,7 @@ public class TestIntegration {
     }
 
 
-    @EJB
+    @Inject
     private Hello hello;
 
 

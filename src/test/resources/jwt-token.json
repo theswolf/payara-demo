@@ -1,0 +1,13 @@
+{
+  "iss": "core.september",
+  "jti": "a-123",
+  "sub": "24400320",
+  "aud": "s6BhdRkqt3",
+  "upn": "test",
+  "groups": [
+    "architect",
+    "master",
+    "leader",
+    "dev"
+  ]
+}
